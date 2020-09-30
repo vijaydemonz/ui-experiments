@@ -28,7 +28,7 @@ export default function HomeScreen({ navigation }: any) {
         )}
         data={[
           { title: "Onbording Animation", screenName: "OnboardingScreen" },
-          { title: "Ballons slider", screenName: "BallonSlider" },
+          { title: "Balloons slider", screenName: "BallonSlider" },
           { title: "Masked flatlist", screenName: "OnboardingScreen" },
           { title: "Animated Switch", screenName: "OnboardingScreen" },
           { title: "Wave", screenName: "Wave" },
@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "white",
   },
   itemStyle: {
     height: px(30),
