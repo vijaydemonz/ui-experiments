@@ -10,6 +10,7 @@ import * as React from "react";
 import { ColorSchemeName } from "react-native";
 import BallonSlider from "../screens/BallonSlider";
 import HomeScreen from "../screens/HomeScreen";
+import MaskedCarousel from "../screens/MaskedCarousel";
 
 import NotFoundScreen from "../screens/NotFoundScreen";
 import OnboardingScreen from "../screens/OnboardingScreen";
@@ -18,7 +19,6 @@ import Wave from "../screens/Wave";
 import { RootStackParamList } from "../types";
 import BottomTabNavigator from "./BottomTabNavigator";
 import LinkingConfiguration from "./LinkingConfiguration";
-
 // If you are not familiar with React Navigation, we recommend going through the
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
 export default function Navigation({
@@ -54,6 +54,8 @@ function RootNavigator() {
       <Stack.Screen name='Wave' component={Wave} />
       <Stack.Screen name='BallonSlider' component={BallonSlider} />
       <Stack.Screen name='Tabbar' component={Tabbar} />
+      <Stack.Screen name='MaskedCarousel' component={MaskedCarousel} />
+
       <Stack.Screen
         name='NotFound'
         component={NotFoundScreen}

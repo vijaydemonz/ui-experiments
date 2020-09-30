@@ -25,17 +25,6 @@ import Slider from "../components/Slider";
 import { animationParameter } from "react-native-redash";
 
 export default function BallonSlider({ navigation }: any) {
-  const translateX = React.useRef(new Animated.Value(0)).current;
-  let x = React.useRef(0).current;
-  const DRAG_THRESHOLD = 35 / 2;
-  const DRAG_LIMIT = 390 - 35 / 2;
-  let containerBounds = React.useRef({
-    width: 0,
-  }).current;
-  let touchStart = 8;
-  let sliderWidth = 60;
-  let containerBorderWidth = 8;
-
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <View
