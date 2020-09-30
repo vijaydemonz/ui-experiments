@@ -23,7 +23,8 @@ import {
 } from "react-native-gesture-handler";
 import Slider from "../components/Slider";
 import { animationParameter } from "react-native-redash";
-export default function BallonSlider() {
+
+export default function BallonSlider({ navigation }: any) {
   const translateX = React.useRef(new Animated.Value(0)).current;
   let x = React.useRef(0).current;
   const DRAG_THRESHOLD = 35 / 2;
@@ -43,7 +44,11 @@ export default function BallonSlider() {
           justifyContent: "center",
           alignItems: "flex-start",
         }}>
-        <TouchableOpacity style={{ paddingTop: 25, paddingLeft: 20 }}>
+        <TouchableOpacity
+          style={{ paddingTop: 25, paddingLeft: 20 }}
+          onPress={() => {
+            navigation.navigate("HomeScreen");
+          }}>
           <Entypo name={"chevron-left"} size={30} />
         </TouchableOpacity>
       </View>

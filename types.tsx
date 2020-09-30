@@ -7,6 +7,7 @@ export type RootStackParamList = {
   HomeScreen: undefined;
   OnboardingScreen: undefined;
   BallonSlider: undefined;
+  Tabbar: undefined;
 };
 
 export type BottomTabParamList = {

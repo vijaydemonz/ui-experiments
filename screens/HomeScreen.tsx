@@ -29,6 +29,7 @@ export default function HomeScreen({ navigation }: any) {
         data={[
           { title: "Onbording Animation", screenName: "OnboardingScreen" },
           { title: "Balloons slider", screenName: "BallonSlider" },
+          { title: "Animated Tabbar", screenName: "Tabbar" },
           { title: "Masked flatlist", screenName: "OnboardingScreen" },
           { title: "Animated Switch", screenName: "OnboardingScreen" },
           { title: "Wave", screenName: "Wave" },

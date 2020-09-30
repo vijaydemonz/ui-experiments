@@ -13,6 +13,7 @@ import HomeScreen from "../screens/HomeScreen";
 
 import NotFoundScreen from "../screens/NotFoundScreen";
 import OnboardingScreen from "../screens/OnboardingScreen";
+import Tabbar from "../screens/Tabbar";
 import Wave from "../screens/Wave";
 import { RootStackParamList } from "../types";
 import BottomTabNavigator from "./BottomTabNavigator";
@@ -52,7 +53,7 @@ function RootNavigator() {
       <Stack.Screen name='OnboardingScreen' component={OnboardingScreen} />
       <Stack.Screen name='Wave' component={Wave} />
       <Stack.Screen name='BallonSlider' component={BallonSlider} />
-
+      <Stack.Screen name='Tabbar' component={Tabbar} />
       <Stack.Screen
         name='NotFound'
         component={NotFoundScreen}
