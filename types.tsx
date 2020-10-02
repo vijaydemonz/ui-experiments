@@ -9,6 +9,7 @@ export type RootStackParamList = {
   BallonSlider: undefined;
   Tabbar: undefined;
   MaskedCarousel: undefined;
+  NeumorphicSlider: undefined;
 };
 
 export type BottomTabParamList = {

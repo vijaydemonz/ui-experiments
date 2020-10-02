@@ -106,9 +106,6 @@ export default function Tabbar({ navigation }: any) {
             flexDirection: "row",
             alignItems: "flex-end",
             justifyContent: "center",
-            // left: 13,
-            // top: -3,
-            // backgroundColor: "orange",
           }}>
           {tabs.map((item, index) => {
             return activeTab == index ? (

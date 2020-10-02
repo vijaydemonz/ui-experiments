@@ -31,7 +31,7 @@ export default function HomeScreen({ navigation }: any) {
           { title: "Balloons slider", screenName: "BallonSlider" },
           { title: "Animated Tabbar", screenName: "Tabbar" },
           { title: "Movie Carousel", screenName: "MaskedCarousel" },
-          { title: "Masked flatlist", screenName: "OnboardingScreen" },
+          { title: "Neumorphic Tuner", screenName: "NeumorphicSlider" },
           { title: "Animated Switch", screenName: "OnboardingScreen" },
           { title: "Wave", screenName: "Wave" },
         ]}

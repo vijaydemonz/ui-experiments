@@ -34,7 +34,7 @@ const Loading = () => (
   </View>
 );
 
-const Backdrop = ({ movies, scrollX }) => {
+const Backdrop = ({ movies, scrollX }: any) => {
   return (
     <View style={{ height: BACKDROP_HEIGHT, width, position: "absolute" }}>
       <FlatList
