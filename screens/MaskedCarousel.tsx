@@ -26,7 +26,7 @@ import { LinearGradient } from "expo-linear-gradient";
 const SPACING = 10;
 const ITEM_SIZE = Platform.OS === "ios" ? width * 0.72 : width * 0.74;
 const EMPTY_ITEM_SIZE = (width - ITEM_SIZE) / 2;
-const BACKDROP_HEIGHT = height * 0.65;
+const BACKDROP_HEIGHT = height * 1;
 
 const Loading = () => (
   <View style={styles.loadingContainer}>
@@ -36,7 +36,12 @@ const Loading = () => (
 
 const Backdrop = ({ movies, scrollX }: any) => {
   return (
-    <View style={{ height: BACKDROP_HEIGHT, width, position: "absolute" }}>
+    <View
+      style={{
+        height: BACKDROP_HEIGHT,
+        width,
+        position: "absolute",
+      }}>
       <FlatList
         data={movies.reverse()}
         keyExtractor={(item) => item.key + "-backdrop"}
@@ -73,9 +78,9 @@ const Backdrop = ({ movies, scrollX }: any) => {
         }}
       />
       <LinearGradient
-        colors={["rgba(0, 0, 0, 0)", "white"]}
+        colors={["rgba(0, 0, 0, 0)", "rgba(0, 0, 0, 0.5)", "rgba(0, 0, 0, 1)"]}
         style={{
-          height: BACKDROP_HEIGHT,
+          height,
           width,
           position: "absolute",
           bottom: 0,
@@ -138,7 +143,7 @@ export default function MaskedCarousel() {
 
           const translateY = scrollX.interpolate({
             inputRange,
-            outputRange: [100, 50, 100],
+            outputRange: [100, 70, 100],
             extrapolate: "clamp",
           });
 

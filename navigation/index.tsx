@@ -10,6 +10,7 @@ import * as React from "react";
 import { ColorSchemeName } from "react-native";
 import BallonSlider from "../screens/BallonSlider";
 import HomeScreen from "../screens/HomeScreen";
+import LandingScreen from "../screens/LandingScreen";
 import MaskedCarousel from "../screens/MaskedCarousel";
 import NeumorphicSlider from "../screens/NeumorphicSlider";
 
@@ -57,6 +58,7 @@ function RootNavigator() {
       <Stack.Screen name='Tabbar' component={Tabbar} />
       <Stack.Screen name='MaskedCarousel' component={MaskedCarousel} />
       <Stack.Screen name='NeumorphicSlider' component={NeumorphicSlider} />
+      <Stack.Screen name='LandingScreen' component={LandingScreen} />
 
       <Stack.Screen
         name='NotFound'

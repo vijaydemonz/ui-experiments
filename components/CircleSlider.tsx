@@ -1,22 +1,17 @@
 /** @format */
 
 import React, { Component } from "react";
-import { PanResponder, View } from "react-native";
-import Svg, {
-  Path,
-  Circle,
-  G,
-  Text,
-  // feOffset,
-  // feBlend,
-} from "react-native-svg";
+import { PanResponder, View, Animated, StyleSheet } from "react-native";
+import Svg, { Path, Circle, G, Text } from "react-native-svg";
+import { BoxShadow } from "react-native-shadow";
+import { LinearGradient } from "expo-linear-gradient";
 
 class CircularSlider extends Component {
   constructor(props) {
     super(props);
-    this.handlePanResponderMove = this.handlePanResponderMove.bind(this);
-    this.cartesianToPolar = this.cartesianToPolar.bind(this);
-    this.polarToCartesian = this.polarToCartesian.bind(this);
+    // this.handlePanResponderMove = this.handlePanResponderMove.bind(this);
+    // this.cartesianToPolar = this.cartesianToPolar.bind(this);
+    // this.polarToCartesian = this.polarToCartesian.bind(this);
     const { width, height } = props;
     const smallestSide = Math.min(width, height);
     this.state = {
@@ -29,25 +24,27 @@ class CircularSlider extends Component {
     this._panResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onMoveShouldSetPanResponder: () => true,
+      onPanResponderEnd: this.handlePanResponderEnd,
       onPanResponderMove: this.handlePanResponderMove,
     });
   };
-  polarToCartesian(angle) {
+  polarToCartesian = (angle) => {
     const { cx, cy, r } = this.state,
       a = ((angle - 270) * Math.PI) / 180.0,
       x = cx + r * Math.cos(a),
       y = cy + r * Math.sin(a);
     return { x, y };
-  }
-  cartesianToPolar(x, y) {
+  };
+  cartesianToPolar = (x, y) => {
     const { cx, cy } = this.state;
     return Math.round(
       Math.atan((y - cy) / (x - cx)) / (Math.PI / 180) + (x > cx ? 270 : 90)
     );
-  }
-  handlePanResponderMove({ nativeEvent: { locationX, locationY } }) {
+  };
+  handlePanResponderMove = ({ nativeEvent: { locationX, locationY } }) => {
     this.props.onValueChange(this.cartesianToPolar(locationX, locationY));
-  }
+  };
+
   render() {
     const {
         width,
@@ -60,61 +57,105 @@ class CircularSlider extends Component {
       { cx, cy, r } = this.state,
       startCoord = this.polarToCartesian(0),
       endCoord = this.polarToCartesian(value);
+    const Shadow = Animated.createAnimatedComponent(BoxShadow);
     return (
-      <Svg
-        onLayout={this.onLayout}
-        viewBox={"0 0 " + width + " " + height}
-        width={width}
-        height={height}>
-        {/* <defs>
-          <filter id='f1' x='0' y='0' width='100%' height='100%'>
-            <feOffset result='offOut' in='SourceGraphic' dx='20' dy='20' />
-            <feBlend in='SourceGraphic' in2='offOut' mode='normal' />
-          </filter>
-        </defs> */}
-        <Circle
-          cx={cx}
-          cy={cy}
-          r={r}
-          stroke='#eee'
-          strokeWidth={0.5}
-          fill='transparent'
-          opacity={0.3}
-        />
-        <Path
-          stroke={meterColor}
-          strokeWidth={5}
-          fill='none'
-          d={`M${startCoord.x} ${startCoord.y} A ${r} ${r} 0 ${
-            value > 180 ? 1 : 0
-          } 1 ${endCoord.x} ${endCoord.y}`}
-        />
-
-        <G x={endCoord.x - 7.5} y={endCoord.y - 7.5}>
+      <React.Fragment>
+        <Svg
+          onLayout={this.onLayout}
+          viewBox={"0 0 " + width + " " + height}
+          width={width}
+          height={height}>
           <Circle
-            cx={7.5}
-            cy={7.5}
-            r={20}
-            // strokeWidth={20}
-            fill={"#E8E8EF"}
-            // id={"url(#f1)"}
-            {...this._panResponder.panHandlers}
+            cx={cx}
+            cy={cy}
+            r={r}
+            stroke='#eee'
+            strokeWidth={0.5}
+            fill='transparent'
+            opacity={0.3}
           />
-          {/* <View
-            style={{ width: 200, height: 200, backgroundColor: "gold" }}
-            {...this._panResponder.panHandlers}
-          /> */}
-          <Text
-            key={value + ""}
-            x={10}
-            y={10}
-            fontSize={10}
-            fill={textColor}
-            textAnchor='middle'>
-            {value + ""}
-          </Text>
-        </G>
-      </Svg>
+          <Path
+            stroke={meterColor}
+            strokeWidth={5}
+            fill='none'
+            d={`M${startCoord.x} ${startCoord.y} A ${r} ${r} 0 ${
+              value > 180 ? 1 : 0
+            } 1 ${endCoord.x} ${endCoord.y}`}
+          />
+
+          <G x={endCoord.x - 7.5} y={endCoord.y - 7.5}>
+            <Circle
+              cx={7.5}
+              cy={7.5}
+              r={20}
+              // strokeWidth={20}
+              fill={"#E8E8EF"}
+              // filter={"url(#f1)"}
+              // id={"url(#f1)"}
+              {...this._panResponder.panHandlers}
+            />
+            <Text
+              key={value + ""}
+              x={10}
+              y={10}
+              fontSize={10}
+              fill={textColor}
+              textAnchor='middle'>
+              {value + ""}
+            </Text>
+          </G>
+        </Svg>
+        <View
+          style={StyleSheet.absoluteFill}
+          {...this._panResponder.panHandlers}>
+          <Shadow
+            setting={{
+              width: 40,
+              height: 40,
+              color: "#fff",
+              border: 10,
+              radius: 20,
+              opacity: 0.1,
+              x: -5,
+              y: -5,
+              style: {
+                position: "absolute",
+                transform: [
+                  { translateX: endCoord.x - 20 },
+                  { translateY: endCoord.y - 20 },
+                ],
+              },
+            }}>
+            <Shadow
+              setting={{
+                width: 40,
+                height: 40,
+                color: "#000",
+                border: 10,
+                radius: 20,
+                opacity: 0.03,
+                x: 5,
+                y: 5,
+                style: {
+                  position: "absolute",
+                  justifyContent: "center",
+                  alignItems: "center",
+                },
+              }}>
+              <Animated.View
+                style={{
+                  backgroundColor: "#E8E8EF",
+                  width: 40,
+                  height: 40,
+                  borderRadius: 20,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  // zIndex: 200,
+                }}></Animated.View>
+            </Shadow>
+          </Shadow>
+        </View>
+      </React.Fragment>
     );
   }
 }

@@ -10,6 +10,7 @@ export type RootStackParamList = {
   Tabbar: undefined;
   MaskedCarousel: undefined;
   NeumorphicSlider: undefined;
+  LandingScreen: undefined;
 };
 
 export type BottomTabParamList = {

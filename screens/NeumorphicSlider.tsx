@@ -6,7 +6,18 @@ import { BoxShadow } from "react-native-shadow";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
 import CircleSlider from "../components/CircleSlider";
+import Ticker from "react-native-ticker";
 
+import { LinearGradient } from "expo-linear-gradient";
+
+const TickerText = (props) => {
+  return (
+    <Ticker textStyle={{ fontSize: 40, color: "#FFF" }} duration={250}>
+      {props.text}
+    </Ticker>
+  );
+};
+// const AnimatedPath = Animated.createAnimatedComponent(LinearGradient);
 export default function NeumorphicSlider() {
   const pan = useRef(new Animated.ValueXY({ x: 0, y: 0 })).current;
 
@@ -159,7 +170,6 @@ export default function NeumorphicSlider() {
       <View
         style={{
           flex: 2,
-          //   backgroundColor: "green",
           justifyContent: "center",
           alignItems: "center",
         }}>
@@ -171,7 +181,7 @@ export default function NeumorphicSlider() {
             border: 100,
             radius: 100,
             opacity: 0.2,
-            x: 40,
+            x: 80,
             y: -20,
             style: { alignSelf: "flex-start" },
           }}>
@@ -221,69 +231,45 @@ export default function NeumorphicSlider() {
                     y: 15,
                     style: { left: 50 },
                   }}>
-                  <View
+                  <LinearGradient
                     style={{
                       width: 100,
                       height: 100,
-                      backgroundColor: "#E8E8EF",
+                      // backgroundColor: "#E8E8EF",
                       borderRadius: 50,
                       flexDirection: "row",
                       justifyContent: "center",
                       alignItems: "center",
-                    }}>
+                      opacity: 0.6,
+                    }}
+                    colors={["purple", "skyblue"]}>
                     <View
                       style={{
+                        width: 100,
+                        height: 100,
+                        // backgroundColor: "#E8E8EF",
+                        borderRadius: 50,
                         flexDirection: "row",
                         justifyContent: "center",
-                        width: 50,
+                        alignItems: "center",
                       }}>
-                      <Animated.ScrollView
-                        ref={(el): any => (digit1 = el)}
-                        contentContainerStyle={{
+                      <View
+                        style={{
+                          flexDirection: "row",
                           justifyContent: "center",
-                          alignItems: "center",
-                        }}
-                        style={{
-                          width: 40,
-                          height: 40,
-                          //   transform: [{ transl }],
-                          //   backgroundColor: "red",
+                          width: 50,
                         }}>
-                        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((item, i) => {
-                          return (
-                            <Text style={{ fontSize: 50, textAlign: "center" }}>
-                              {item}
-                            </Text>
-                          );
-                        })}
-                      </Animated.ScrollView>
-
-                      <ScrollView
-                        scrollEnabled={false}
-                        // snapToOffsets={}
-                        ref={(el) => (digit2 = el)}
-                        style={{
-                          width: 40,
-                          height: 40,
-                          //   backgroundColor: "red",
-                        }}>
-                        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((item, i) => {
-                          return (
-                            <Text style={{ fontSize: 50, textAlign: "center" }}>
-                              {item}
-                            </Text>
-                          );
-                        })}
-                      </ScrollView>
+                        <TickerText text={slider} />
+                      </View>
                     </View>
-                  </View>
+                  </LinearGradient>
                 </BoxShadow>
               </BoxShadow>
             </View>
           </BoxShadow>
         </BoxShadow>
       </View>
-      <View style={{ flex: 1, backgroundColor: "red" }} />
+      <View style={{ flex: 1 }} />
     </View>
   );
 }
