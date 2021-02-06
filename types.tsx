@@ -11,6 +11,8 @@ export type RootStackParamList = {
   MaskedCarousel: undefined;
   NeumorphicSlider: undefined;
   LandingScreen: undefined;
+  CardFlip: undefined;
+  MenuDrawer: undefined;
 };
 
 export type BottomTabParamList = {

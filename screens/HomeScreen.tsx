@@ -20,7 +20,8 @@ export default function HomeScreen({ navigation }: any) {
           <TouchableOpacity
             onPress={() => {
               navigation.navigate(item.screenName);
-            }}>
+            }}
+          >
             <View style={styles.itemStyle}>
               <Text style={{ fontSize: 16 }}>{item.title}</Text>
             </View>
@@ -37,6 +38,9 @@ export default function HomeScreen({ navigation }: any) {
             screenName: "LandingScreen",
           },
           { title: "Wave", screenName: "Wave" },
+          { title: "Card Flip", screenName: "CardFlip" },
+
+          { title: "Fap drawer", screenName: "MenuDrawer" },
         ]}
       />
     </View>

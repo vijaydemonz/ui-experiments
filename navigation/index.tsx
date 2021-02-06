@@ -9,9 +9,11 @@ import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
 import { ColorSchemeName } from "react-native";
 import BallonSlider from "../screens/BallonSlider";
+import CardFlip from "../screens/CardFlip";
 import HomeScreen from "../screens/HomeScreen";
 import LandingScreen from "../screens/LandingScreen";
 import MaskedCarousel from "../screens/MaskedCarousel";
+import MenuDrawer from "../screens/MenuDrawer";
 import NeumorphicSlider from "../screens/NeumorphicSlider";
 
 import NotFoundScreen from "../screens/NotFoundScreen";
@@ -31,7 +33,8 @@ export default function Navigation({
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
-      theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+      theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+    >
       <RootNavigator />
     </NavigationContainer>
   );
@@ -48,20 +51,22 @@ function RootNavigator() {
         headerShown: false,
         headerStyle: { backgroundColor: "#4630EB" },
         headerTitleStyle: { color: "white" },
-      }}>
+      }}
+    >
       {/* <Stack.Screen name="Root" component={BottomTabNavigator} /> */}
 
-      <Stack.Screen name='HomeScreen' component={HomeScreen} />
-      <Stack.Screen name='OnboardingScreen' component={OnboardingScreen} />
-      <Stack.Screen name='Wave' component={Wave} />
-      <Stack.Screen name='BallonSlider' component={BallonSlider} />
-      <Stack.Screen name='Tabbar' component={Tabbar} />
-      <Stack.Screen name='MaskedCarousel' component={MaskedCarousel} />
-      <Stack.Screen name='NeumorphicSlider' component={NeumorphicSlider} />
-      <Stack.Screen name='LandingScreen' component={LandingScreen} />
-
+      <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
+      <Stack.Screen name="Wave" component={Wave} />
+      <Stack.Screen name="BallonSlider" component={BallonSlider} />
+      <Stack.Screen name="Tabbar" component={Tabbar} />
+      <Stack.Screen name="MaskedCarousel" component={MaskedCarousel} />
+      <Stack.Screen name="NeumorphicSlider" component={NeumorphicSlider} />
+      <Stack.Screen name="LandingScreen" component={LandingScreen} />
+      <Stack.Screen name="CardFlip" component={CardFlip} />
+      <Stack.Screen name="MenuDrawer" component={MenuDrawer} />
       <Stack.Screen
-        name='NotFound'
+        name="NotFound"
         component={NotFoundScreen}
         options={{ title: "Oops!" }}
       />
